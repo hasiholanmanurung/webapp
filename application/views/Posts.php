@@ -1,0 +1,16 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewsport" content="width-device-width, initial-scale=1.0">
+    <title> Document</title>
+</head>
+<body>
+<h2><?= $title;?></h2>
+<p><?php echo $par; ?></p>
+
+</body> 
+</html>
