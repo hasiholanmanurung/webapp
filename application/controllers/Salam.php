@@ -20,9 +20,14 @@ class Salam extends CI_Controller {
 	 */
 	public function index()
 	{
-        $testy['title'] = ucwords('salam');
+        $testy['title'] = ucwords('Hi guys');
         $testy['par'] =ucwords('Selamat datang');
-		$this->load->view('salam_message', $testy);
+		// $this->load->view('salam_message', $testy);
+		
+		$this->load->view('template/header.php');
+		$this->load->view('salam/index', $testy);
+		$this->load->view('template/footer');
+
 	}
 
     public function view($kamu = null){

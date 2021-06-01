@@ -1,18 +1,35 @@
+<br>
+<center><div class="h2 mb-3" style="max-width: 30rem;">
+<?php echo $title; ?></div></center>
+        
+        <center><div class="card border-info mb-3" style="max-width: 25rem;">
+            <div class="card text-white bg-primary mb-3">
+                <br>
+                <!-- <a href="<//?=site_url("/buku/");?>" class="btn btn-dark btn-block">&lt;</a> -->
+                <span class="text-center"><?=$data->judul ?></span>
+                <br>
+              </div>
+              
 
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between"><em>Pengarang:</em>          <span><?=$data->pengarang ?></span></li>
+                    <li class="list-group-item d-flex justify-content-between"><em>Penerbit:</em>           <span><?=$data->penerbit ?></span></li>
+                    <li class="list-group-item d-flex justify-content-between"><em>Tanggal Terbit:</em>     <span><?=$data->tglterbit ?></span></li>
+                    <li class="list-group-item d-flex justify-content-between"><em>ISBN:</em>               <span><?=$data->isbn ?></span></li>
+                </ul>
+            </div>
 
-<div class="h2"><?php echo $title; ?></div>
+            <div class="modal-footer">
+           
+            <a href="<?=site_url("/buku/edit/");?><?=$data->id;?>" class="btn btn-warning btn-block">Edit</a>
+            <?=form_open(site_url("/buku/delete/$data->id"), 'style="width:100px" method="delete"'); ?>
+                <input type="submit" value="Hapus" class="btn btn-danger btn-block">
+            <?=form_close();?>
+            <a href="<?=site_url("/buku/");?>" class="btn btn-dark btn-block">Back</a>
+            </div>
+            
+        
+        </div></center>
 
-<?php foreach($data as $item) : ?>
-<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-    <div class="card-header h3 d-flex justify-content-between"><?=$item->judul ?><small><?=$item->pengarang ?></small></div>
-    <div class="card-body">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between"><em>Pengarang:</em>         <span><?=$item->pengarang ?></span></li>
-            <li class="list-group-item d-flex justify-content-between"><em>Penerbit:</em>         <span><?=$item->penerbit ?></span></li>
-            <li class="list-group-item d-flex justify-content-between"><em>Tanggal Terbit:</em>   <span><?=$item->tglterbit ?></span></li>
-            <li class="list-group-item d-flex justify-content-between"><em>ISBN:</em>             <span><?=$item->isbn ?></span></li>
-        </ul>
-    </div>
-    <!-- <hr> -->
-</div>
-<?php endforeach ?>
+       
