@@ -14,6 +14,7 @@
 
             $response = json_decode(curl_exec($svcGet));
             curl_close($svcGet);
+            
             // print_r($response);
             // die();
             return $response;
@@ -141,6 +142,8 @@
             else
                 show_404();
         }
+
+        
 
     }
     

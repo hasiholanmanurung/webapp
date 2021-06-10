@@ -1,3 +1,8 @@
+<?php
+    if(!$this->session->userdata('username')) redirect('login','refresh');
+?>
+
+
 <br>
 <div class="h2"><?php echo $title; ?></div>
 
@@ -8,7 +13,7 @@
     <input type="hidden" name="ID">
     <div class="form-group">
         <label for="txtKodepel" class="form-label mt-4">Kode Pelanggan</label>
-        <input type="text" class="form-control" name="kodepel" id="txtKodepel" aria-describedby="KodepelHelp" placeholder="Masukkan Judul Buku">
+        <input type="number" class="form-control" name="kodepel" id="txtKodepel" aria-describedby="KodepelHelp" placeholder="Masukkan Kode Pelanggan ">
         <!-- <small id="judulHelp" class="form-text text-muted">Masukkan Judul Buku.</small> -->
     </div>
     <div class="form-group">
@@ -36,8 +41,9 @@
       <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
     </div> -->
     <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Kirim</button>
     <button type="button" onclick="history.back(-1)" class="btn btn-secondary">Batal </button>
+    <!-- <a href="<//?=site_url('/pelanggan')?>" class="btn btn-danger">Batal</a> -->
   </fieldset>
   <?=form_close();?>
 

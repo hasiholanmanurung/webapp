@@ -4,6 +4,10 @@
 </head>
 <body>
     <div class="container"> -->
+
+    <?php
+    if(!$this->session->userdata('username')) redirect('login','refresh');
+?>
     <br>
 <center><div class="h2"><?php echo $title; ?></div>
 <br>
@@ -13,7 +17,7 @@
          -->
     <!-- <div class="card text-white bg-primary mb-3" style="max-width: 40rem;"> -->
     <div class="card border-info mb-3" style="max-width: 40rem;">
-        <div class="card-header h4 d-flex justify-content-between">Judul Buku : 
+        <div class="card-header text-white bg-primary h4 d-flex justify-content-between">Judul Buku : 
             <a href="<?=site_url('/buku/view/')?><?=$item->id ?>"><?=$item->judul ?></a>
            
         </div>

@@ -12,6 +12,11 @@ class Buku extends CI_Controller {
 
 	public function index()
 	{
+		if(!$this->session->userdata('username')){
+			$this->session->set_flashdata('error',"Tidak dapat mengakses, Harap Login");
+
+			redirect('login','refresh');
+		}
         $data['title'] = ucwords('Daftar Buku');
 
         $data['data'] = $this->buku_model->getAll();
@@ -36,6 +41,13 @@ class Buku extends CI_Controller {
 	}
 
 	public function create() {
+
+		if($this->session->userdata('role')<>'write') {
+			$this->session->set_flashdata('error',"Access Unauthorized! Admin Only.");
+			redirect('Salam','refresh');
+		
+		}
+
 		$data['title'] = ucwords('Tambah Buku');
 
 		//Load Library untuk Form Validation
@@ -72,6 +84,12 @@ class Buku extends CI_Controller {
 	}
 
 	public function delete($idBuku = NULL) {
+
+		if($this->session->userdata('role')<>'write') {
+			$this->session->set_flashdata('error',"Access Unauthorized! Admin Only.");
+			redirect('Salam','refresh');
+		}
+
 		if (is_null($idBuku)) {
 			$this->session->set_flashdata('error',"Buku belum dipilih");
 		}
@@ -89,6 +107,11 @@ class Buku extends CI_Controller {
 	}
 
 	public function edit($idBuku) {
+
+		if($this->session->userdata('role')<>'write') {
+			$this->session->set_flashdata('error',"Access Unauthorized! Admin Only.");
+			redirect('Salam','refresh');
+		}
 		if (is_null($idBuku)) {
 			$this->session->set_flashdata('error',"Buku belum dipilih");
 		}

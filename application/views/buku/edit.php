@@ -1,3 +1,7 @@
+<?php
+    if(!$this->session->userdata('username')) redirect('login','refresh');
+?>
+
 <div class="h2"><?php echo $title; ?></div>
 
 <?=form_open("buku/edit/$data->id");?>

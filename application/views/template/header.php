@@ -2,11 +2,10 @@
 <head>
     <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.css">
 </head>
-<body >
+<body>
+
+
 <title>CI Library</title>
-
-
-<!-- <body data-spy="scroll" data-offset="0" data-target="#navbar-main"> -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?=site_url();?>">CI Library</a>
@@ -16,17 +15,25 @@
 
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="<?=site_url();?>">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?=site_url();?>">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=site_url();?>buku">Buku</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=site_url();?>pelanggan">Pelanggan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url();?>sewa">Sewa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url();?>users">User</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=site_url();?>userroles">Users Role</a></li>
+                    <?php if ($this->session->userdata('role')=='write' || $this->session->userdata('role')=='admin') : ?>
+                    <?php endif; ?>
                 </ul>
-                <!-- <div class="d-flex">
-                    <a class="btn btn-success my-2 my-sm-0" href="<?=site_url()?>buku/create">Add Buku</a>
-                    <a class="btn btn-success my-2 my-sm-0" href="<?=site_url()?>pelanggan/create">Add Pelanggan</a>
-                </div> -->
+                <?php if($this->session->userdata('username')): ?>
+                    <div class="text-white"><?=$this->session->userdata('email')?></div>
+                    <a class="btn btn-danger" type="button" href="<?= base_url(); ?>login/logout">Logout</a></li>
+                    <?php else: ?>
+                    <a class="btn btn-success" type="button" href="<?= base_url(); ?>login">Login</a></li>
+                <?php endif ?>
+                
             </div>
         </div>
-</nav>
+    </nav>
 
     <div class="container">
 

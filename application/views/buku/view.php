@@ -1,3 +1,8 @@
+<?php
+    if(!$this->session->userdata('username')) redirect('login','refresh');
+?>
+
+
 <br>
 <center><div class="h2 mb-3" style="max-width: 30rem;">
 <?php echo $title; ?></div></center>
@@ -21,12 +26,16 @@
             </div>
 
             <div class="modal-footer">
-           
+            <a href="<?=site_url("/buku/");?>" class="btn btn-dark btn-block">Back</a>
+            <?php if ($this->session->userdata('role')=='write' || $this->session->userdata('role')=='admin') : ?>
+
             <a href="<?=site_url("/buku/edit/");?><?=$data->id;?>" class="btn btn-warning btn-block">Edit</a>
             <?=form_open(site_url("/buku/delete/$data->id"), 'style="width:100px" method="delete"'); ?>
                 <input type="submit" value="Hapus" class="btn btn-danger btn-block">
             <?=form_close();?>
-            <a href="<?=site_url("/buku/");?>" class="btn btn-dark btn-block">Back</a>
+            <?php endif; ?>
+
+            
             </div>
             
         

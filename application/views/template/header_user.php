@@ -22,19 +22,18 @@
                     <li class="nav-item"><a class="nav-link" href="<?=site_url();?>sewa">Sewa</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=site_url();?>users">User</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=site_url();?>userroles">Users Role</a></li>
-                    <?php if ($this->session->userdata('role')=='write' || $this->session->userdata('role')=='admin') : ?>
-
-                    <?php endif; ?></ul>
+                </ul>
                 <div class="text-white"><?=$this->session->userdata('email')?></div>
                 <?php if ($this->session->userdata('role')=='write' || $this->session->userdata('role')=='admin') : ?>
+                
                 <div class="d-flex">
-                    <a class="btn btn-success my-2 my-sm-0" href="<?=site_url()?>pelanggan/create">Tambah Pelanggan</a>
+                    <a class="btn btn-success my-2 my-sm-0" href="<?=site_url()?>users/create">Tambah User</a>
                 </div>
             </div>
             <?php endif; ?>
         <?php endif; ?>
         </div>
-   
+     
         <a class="btn btn-danger" type="button" href="<?= base_url(); ?>login/logout">Logout</a></li>
     </nav>
 

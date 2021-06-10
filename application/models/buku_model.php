@@ -1,6 +1,6 @@
 <?php
 
-    class Buku_Model extends CI_Model {
+class Buku_Model extends CI_Model {
         public function getAll() {
             //Mengakses Web Service menggunakan HTTP Request
             $api_url = "http://localhost:8085/gets";
@@ -17,6 +17,7 @@
             $response = json_decode(curl_exec($svcGet));
             
             curl_close($svcGet);
+            // var_dump($response); die();
 
             if (!is_null($response))            
                 return $response;
@@ -108,9 +109,9 @@
         public function deleteBuku($idBuku) {
             //Mengakses Web Service menggunakan HTTP Request
             $api_url = "http://localhost:8085/delete/$idBuku";
-
+            // var_dump($api_url); die();
             $svcGet = curl_init();
-
+            // var_dump($api_url); die();
             curl_setopt_array($svcGet, array(
                 CURLOPT_URL => $api_url,
                 CURLOPT_RETURNTRANSFER => true,
@@ -120,7 +121,7 @@
             ));
 
             $response = json_decode(curl_exec($svcGet));
-
+            // var_dump($response); die();
             curl_close($svcGet);
 
             if (!is_null($response))            
@@ -132,7 +133,6 @@
         public function editBuku($idBuku) {
             //Mengakses Web Service menggunakan HTTP Request
             $api_url = "http://localhost:8085/edit/$idBuku";
-
             $data = array(
                 'id' => $this->input->post('id', true),
                 'judul' => $this->input->post('judul', true),
@@ -142,7 +142,6 @@
                 'isbn' => $this->input->post('isbn', true),
                 'userid' => $this->input->post('userId', true)
             );
-
             $svcGet = curl_init();
 
             curl_setopt_array($svcGet, array(
@@ -154,11 +153,8 @@
                 CURLOPT_POSTFIELDS => json_encode($data),
                 CURLOPT_HTTPHEADER => array('Content-Type: application/json')
             ));
-
             $response = json_decode(curl_exec($svcGet));
-
             curl_close($svcGet);
-
             // var_dump($response);
             if (!is_null($response))            
                 return $response;

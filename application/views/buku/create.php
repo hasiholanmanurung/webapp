@@ -1,3 +1,8 @@
+
+<?php
+    if(!$this->session->userdata('username')) redirect('login','refresh');
+?>
+
 <br>
 <div class="h2"><?php echo $title; ?></div>
 
@@ -37,6 +42,7 @@
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
     <button type="button" onclick="history.back(-1)" class="btn btn-secondary">Batal </button>
+    <!-- <a href="<//?=site_url('/pelanggan')?>" class="btn btn-danger">Batal</a> -->
   </fieldset>
   <?=form_close();?>
 
